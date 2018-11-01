@@ -1,0 +1,42 @@
+ 
+buildscript {
+    ext.kotlin_version = '1.2.41' // Required for Kotlin integration
+    ext.spring_boot_version = '1.5.4.RELEASE'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
+    	classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+        classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlin_version"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'kotlin' // Required for Kotlin integration
+apply plugin: 'kotlin-spring'
+apply plugin: "kotlin-jpa"
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    jcenter()
+}
+
+jar{
+   baseName = 'kotlin-demo'
+   version = '0.0.1'
+}
+dependencies {
+    
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile'com.fasterxml.jackson.module:jackson-module-kotlin'
+    compile 'com.alibaba:druid-spring-boot-starter:1.1.10'
+    compile 'mysql:mysql-connector-java:5.1.6'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

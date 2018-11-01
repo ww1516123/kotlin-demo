@@ -1,0 +1,16 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/kotlin-demo?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    platform: mysql
+    initialize: true
+    continue-on-error: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
